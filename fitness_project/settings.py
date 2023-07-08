@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-*5ku)9&6^-79mqvw2g*q#6px#=rgy7d-ma79b7z3j&_2cbd_re
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -82,16 +82,16 @@ WSGI_APPLICATION = 'fitness_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASS'),
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': config('DB_NAME'),
+#         'USER': config('DB_USER'),
+#         'PASSWORD': config('DB_PASS'),
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 cloudinary.config (
     cloud_name = config('CD_NAME'),
@@ -99,6 +99,10 @@ cloudinary.config (
     api_secret = config('CD_SECRET'),
     secure = config('CD_SECURE')
     )
+
+DATABASES = {
+    "default": dj_database_url.parse(os.environ.get("DATABASE_url"))
+}
 
 
 # Password validation
