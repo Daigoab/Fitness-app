@@ -1,0 +1,121 @@
+6{% load bootstrap4 static %}
+{% block content %}
+
+<style>
+
+  body {
+    background-color: #fefefe;
+  }
+  .workout-card {
+    margin-top: 100px;
+    margin-left: 300px;
+    max-width: 700px;
+    border: 1px solid rgb(216, 214, 214);
+  }
+
+  .card-header {
+    text-align: center;
+
+  }
+
+  .card-header h2 {
+    font-size: 30px;
+    margin-top: 20px;
+  }
+
+  .header-img {
+    display: flex;
+    margin-top: 30px;
+    margin-left: 220px;
+  }
+
+  img {
+    width: 70px;
+  }
+
+
+  .card-header a {
+    margin-right: -570px;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: aliceblue;
+    font-family: sans-serif;
+  }
+
+  .card-body{
+    line-height: 40px;
+    font-size: 20px;
+  }
+
+  .card-body h2 {
+    margin-left: 60px;
+    font-size: 25px;
+  }
+
+</style>
+
+<div class="workout-card">
+  <div class="card-header">
+    <div class="header-img">
+      <img src="{% static 'images/icons8-muscle-flexing-50.png' %}" alt="Muscle Flexing">
+      <h2>My Workouts </h2>
+    </div>
+
+    <a href="/workouts/add/" class="button">Add Workout</a>
+  </div>
+  <div class="card-body">
+    <div class="workout-totals">
+      <h2>Workout Totals</h2>
+      <p>Total Duration: {{ total_duration|default:0 }}</p>
+      <p>Total Distance: {{ total_distance|default:0 }}</p>
+      <p>Total Calories Burnt: {{ total_calories_burnt |default:0 }}</p>
+    </div>
+    
+    <div class="card-row1">
+      {% if workouts %}
+      <ul>
+        {% for workout in workouts %}
+          <li>
+            <strong>Workout Title:</strong> {{ workout.title }}<br>
+            <strong>Exercise name:</strong> {{ workout.exercise_name }}<br>
+            <strong>Sets done:</strong> {{ workout.sets }} sets<br>
+            <strong>Reps done:</strong> {{ workout.reps }} reps<br>
+            <strong>Weight lifted:</strong> {{ workout.weight }} kg<br>
+            <strong>Cardio exercise type:</strong> {{ workout.cardio_name }}<br>
+            <strong>Duration:</strong> {{ workout.duration }} min<br>
+            <strong>Distance covered:</strong> {{ workout.distance }} m<br>
+            <strong>Total calories taken:</strong> {{ workout.total_calories }} kcal<br>
+            <strong>Total calories burnt:</strong> {{ workout.calories_burnt }} kcal<br>
+            <strong>Date:</strong> {{ workout.date }}<br>
+          </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <h2>No workouts found.</h2>
+      {% endif %}
+    </div>
+
+    
+    
+    <div class="card-row2">
+      {% if comments %}
+      <ul>
+        {% for comment in comments %}
+          <li>
+            <strong>User:</strong> {{ comment.user }}<br>
+            <strong>Comment:</strong> {{ comment.comment }} Sets<br>
+          </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <h2>No comments posted.</h2>
+      {% endif %}
+    </div>
+    
+
+  </div>
+  
+</div>
+{% endblock %}

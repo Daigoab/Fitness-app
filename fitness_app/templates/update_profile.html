@@ -1,0 +1,67 @@
+
+{% block content %}
+{% load bootstrap4 static %}
+
+<style>
+    .container-update {
+        max-width: 700px;
+        margin-left: 300px;
+        margin-top: 100px;
+        line-height: 40px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
+    }
+
+    .header {
+        display: inline-flex;
+        justify-content: start;
+    }
+
+    .header img {
+        height: 70px;
+        margin-top: 25px;
+        margin-left: 40px;
+    }
+
+
+    .container-update h1 {
+        padding-top: 30px;
+        margin-left: 30px;
+        font-size: 30px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .container-update p {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+    }
+
+    input {
+        width: 50%;
+        height: 20px;
+        float: right;
+        margin-right: 100px;
+        padding: 20px;
+    }
+
+    button {
+        margin-left: 250px;
+        margin-bottom: 30px;
+        padding: 10px;
+        background-color: aliceblue;
+    }
+
+</style>
+    <div class="container-update">
+       <div class="header">
+        <img src="{% static 'images/icons8-muscle-flexing-50.png' %}" alt="Muscle Flexing">
+             <h1>Update Profile</h1>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update</button>
+        </form>
+    </div>
+ 
+{% endblock %}

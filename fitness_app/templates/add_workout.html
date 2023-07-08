@@ -1,0 +1,76 @@
+{% load bootstrap4 static %}
+{% block content %}
+<style>
+  .container {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    max-width: 900px;
+    margin-left: 200px;
+    display: block;
+    justify-content: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
+  }
+
+  .container-header {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .container-header img {
+    width: 60px;
+  }
+
+  .container-header h1 {
+    margin-bottom: 40px;
+    margin-left: 0px;
+    padding-top: 40px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  input[type="number"] {
+    width: 35%;
+    height: 40px;
+    display: grid;
+    justify-content: space-between;
+  }
+
+  .forms-row {
+    margin-left: 70px;
+    margin-right: 70px;
+    border-bottom: none;
+  }
+
+  button {
+    margin-left: 100px;
+    margin-bottom: 20px;
+    background-color: rgb(96, 96, 247);
+    padding: 10px;
+  }
+
+</style>
+
+<div class="container">
+  <div class="container-header">
+    <img src="{% static 'images/icons8-muscle-flexing-50.png' %}" alt="Muscle Flexing">
+    <h1>Add Workout For Today</h1>
+  </div>
+  <div class="forms-row">
+    <form method="post" action="{% url 'add_workout' %}">
+      {% csrf_token %}
+
+      {{ form.as_p }}
+      {{ comment_form.as_p }}
+
+    </div>
+    <button type="submit" class="btn btn-primary">Save Workout</button>
+  </form>
+</div>
+{% endblock %}

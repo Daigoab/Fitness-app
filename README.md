@@ -1,1 +1,1 @@
-# Fitness-app
+# LMS-app

@@ -1,0 +1,17 @@
+footer {
+    background-color: black;
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  
+  .footer-container {
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  p {
+    font-size: 20px;
+    color: #faf8f8;
+  }

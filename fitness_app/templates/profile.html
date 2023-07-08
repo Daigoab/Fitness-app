@@ -1,0 +1,111 @@
+{% block content %}
+{% load bootstrap4 static %}
+<style>
+
+
+    .profile-container {
+        max-width: 900px;
+        margin-left: 200px;
+        margin-top: 150px;
+        text-align: center;
+        height: 900px;
+    }
+
+    .profile-header {
+        margin-right: 600px;
+        margin-top: 30px;
+        font-size: 30px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .profile-photo {
+        margin-top: 30px;
+        max-width: 350px;
+        border-radius: 50%;
+    }
+
+    .profile-container a {
+        
+        margin-right: 0px;
+        text-decoration: none;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 5px;
+        color: white;
+        background-color: black;
+        font-family: sans-serif;
+    }
+
+    .row p {
+        border: 1px solid grey;
+        border-radius: 20px;
+        color: white;
+        background-color: black;
+        max-width: 400px;
+        margin-left: 250px;
+        padding: 10px;
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+</style>
+<section class="profile-container">
+    <div class="mt-6">
+        <div class="row">
+            <div class="profile-header">
+                <h1>Profile info </h1>
+            </div>
+
+            {% if profile.profile_photo %}
+                <img src="{{ profile.profile_photo.url }}" alt="Profile Photo" class="profile-photo">
+            {% else %}
+                <img src="{% static 'images/default-profile-pic.png' %}" alt="Default Profile Photo" class="profile-photo">
+            {% endif %}
+
+            <p>Username: {{ user.username }}</p>
+
+            <p>
+                {% if profile.first_name %}
+                    <small>First Name: {{ profile.first_name }}</small>
+                {% else %}
+                    <span class="text-danger">No first name</span>
+                {% endif %}
+            </p>
+        
+            <p>
+                {% if profile.last_name %}
+                    <small>Last Name: {{ profile.last_name }}</small>
+                {% else %}
+                    <span class="text-danger">No last name</span>
+                {% endif %}
+            </p>
+        
+            <p>
+                {% if profile.city %}
+                    <small>City: {{ profile.city }}</small>
+                {% else %}
+                    <span class="text-danger">No city</span>
+                {% endif %}
+            </p>
+        
+            <p>Email: {{ profile.email }}</p>
+        
+            <p>
+                {% if profile.weight %}
+                    <small>Weight: {{ profile.weight }} kg</small>
+                {% else %}
+                    <span class="text-danger">No weight</span>
+                {% endif %}
+            </p>
+        
+            <p>
+                {% if profile.height %}
+                    <small>Height: {{ profile.height }} cm</small>
+                {% else %}
+                    <span class="text-danger">No height</span>
+                {% endif %}
+            </p>
+        </div>
+        <a href="/update_profile/" class="button">Update profile info</a>
+    </div>
+</section>
+{% endblock %}
