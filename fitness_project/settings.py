@@ -101,7 +101,7 @@ cloudinary.config (
     )
 
 DATABASES = {
-    "default": dj_database_url.parse(os.environ.get("DATABASE_url"))
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
